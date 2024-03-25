@@ -85,7 +85,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="col-sm-9 mx-auto my-5">
             @yield('content')
         </main>
     </div>
