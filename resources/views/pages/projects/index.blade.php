@@ -21,7 +21,11 @@
             @foreach ($projects as $project)
                 <tr>
                 <th scope="row">{{ $project->id }}</th>
-                <td>{{ $project->title }}</td>
+                <td>
+                  <a href="{{ route('dashboard.projects.show', ['project'=>$project[ 'id']]) }}">
+                    {{ $project->title }}
+                  </a>
+                </td>
                 <td>{{ $project->slug }}</td>
                 <td>{{ $project->img }}</td>
                 <td>{{ $project->description }}</td>
