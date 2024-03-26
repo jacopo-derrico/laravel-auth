@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -54,17 +55,25 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('pages.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug = Project::generateSlug($request->title);
+
+        $val_data['slug'] = $slug;
+
+        $project->update($val_data);
+
+        return redirect()->route('dashboard.projects.index');
     }
 
     /**
