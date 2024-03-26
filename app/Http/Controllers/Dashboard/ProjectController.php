@@ -40,7 +40,7 @@ class ProjectController extends Controller
 
         $new_project = Project::create($val_data);
 
-        return redirect()->route('dashboard.project.index');
+        return redirect()->route('dashboard.projects.index');
     }
 
     /**
@@ -72,6 +72,5 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
     }
 }

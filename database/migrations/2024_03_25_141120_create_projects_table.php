@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->unique();
             $table->string('slug');
-            $table->string('img');
-            $table->text('description');
-            $table->string('software');
+            $table->string('img')->default('https://picsum.photos/200');
+            $table->text('description', 500);
+            $table->string('software', 100);
             $table->timestamps();
         });
     }
