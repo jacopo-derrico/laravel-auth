@@ -4,7 +4,7 @@
 
     <h1>Create new Project</h1>
 
-    <form action="{{ route('dashboard.projects.store')}}" method="POST">
+    <form action="{{ route('dashboard.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -14,7 +14,7 @@
 
         <div class="mb-3">
             <label for="img" class="form-label">Image</label>
-            <input type="text" class="form-control" id="img" name="img" placeholder="Image URL">
+            <input type="file" class="form-control" id="img" name="img" placeholder="Image URL">
         </div>
 
         <div class="mb-3">
