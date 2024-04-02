@@ -89,6 +89,10 @@ class ProjectController extends Controller
     {
         $project->delete();
 
+        if ($project->img) {
+            Storage::delete($project->img);
+        }
+
         return redirect()->route('dashboard.projects.index');
     }
 }
