@@ -17,7 +17,7 @@
         
     @endif
 
-    <form action="{{ route('dashboard.projects.update', $project->id)}}" method="POST">
+    <form action="{{ route('dashboard.projects.update', $project->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -27,8 +27,14 @@
         </div>
 
         <div class="mb-3">
+            @if ($project->img)
+                <img class="img-fluid" src="{{ asset('storage/' . $project->img ) }}" alt="{{ $project->title }}">
+            @endif
+        </div>
+
+        <div class="mb-3">
             <label for="img" class="form-label">Image</label>
-            <input type="text" class="form-control" id="img" name="img" placeholder="Image URL" value="{{old('img', $project->img)}}">
+            <input type="file" class="form-control" id="img" name="img" placeholder="Image URL" value="{{old('img', $project->img)}}">
         </div>
 
         <div class="mb-3">
