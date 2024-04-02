@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -38,6 +39,11 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->title);
 
         $val_data['slug'] = $slug;
+
+        if ($request->hasFile('img')) {
+            $path = Storage::disk('public')->put('projects_img', $request['img']);
+            $val_data['coover'] = $path;
+        };
 
         $new_project = Project::create($val_data);
 

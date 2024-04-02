@@ -10,6 +10,9 @@
     </div>
 
     <div class="container">
+        @if ($project->img)
+            <img class="img-fluid" src="{{ asset('storage' . $project->img ) }}" alt="{{ $project->title }}">
+        @endif
         <p>
             {{ $project->description }}
         </p>
