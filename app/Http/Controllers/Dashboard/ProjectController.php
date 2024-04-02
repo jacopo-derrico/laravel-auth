@@ -42,7 +42,7 @@ class ProjectController extends Controller
 
         if ($request->hasFile('img')) {
             $path = Storage::disk('public')->put('projects_img', $request['img']);
-            $val_data['coover'] = $path;
+            $val_data['img'] = $path;
         };
 
         $new_project = Project::create($val_data);
